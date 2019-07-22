@@ -46,6 +46,7 @@ oz_private <- function() {
 #' is the name for the address provided above.
 #'
 #' @param ... dots, ignored
+#' @param include_cran if `TRUE`
 #'
 #' @return data frame of packages from each repository
 #' @export
@@ -55,7 +56,7 @@ oz_private <- function() {
 #' oz_db() %>% group_by(repos) %>%
 #' summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>%
 #' arrange(desc(date))
-oz_db <- function(...) {
+oz_db <- function(..., include_cran = FALSE) {
   env0 <- Sys.getenv("R_CRAN_WEB")
   on.exit(if (!is.null(env0)) {Sys.setenv(R_CRAN_WEB = env0)} else {Sys.unsetenv("R_CRAN_WEB")}, add = TRUE)
   repos <- oz_repos()

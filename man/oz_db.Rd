@@ -4,10 +4,12 @@
 \alias{oz_db}
 \title{Australian CRAN mirrors}
 \usage{
-oz_db(...)
+oz_db(..., include_cran = FALSE)
 }
 \arguments{
 \item{...}{dots, ignored}
+
+\item{include_cran}{if \code{TRUE}}
 }
 \value{
 data frame of packages from each repository
@@ -16,8 +18,8 @@ data frame of packages from each repository
 Database of packages from Australian CRAN mirrors
 }
 \details{
-The data returned is from [tools::CRAN_package_db()] and not [utils::available.packages()], but with the
-duplicated "MD5Sums" column removed (which breaks tibble/dplyr.) There is an added column `repos` which
+The data returned is from \code{\link[tools:CRAN_package_db]{tools::CRAN_package_db()}} and not \code{\link[utils:available.packages]{utils::available.packages()}}, but with the
+duplicated "MD5Sums" column removed (which breaks tibble/dplyr.) There is an added column \code{repos} which
 is the name for the address provided above.
 }
 \examples{
@@ -27,5 +29,5 @@ summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) \%>\%
 arrange(desc(date))
 }
 \seealso{
-[oz_repos()] for the list of mirrors used
+\code{\link[=oz_repos]{oz_repos()}} for the list of mirrors used
 }

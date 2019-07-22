@@ -13,21 +13,21 @@ named vector of mirror addresses
 Hardcoded list of Australian mirrors
 }
 \details{
-These are by name [csiro](https://cran.csiro.au), [unimelb](https://cran.ms.unimelb.edu.au),
-[aarnet](https://mirror.aarnet.edu.au/pub/CRAN), [curtin](https://cran.curtin.edu.au),
-[aws](https://cloud.r-project.org).
+These are by name \href{https://cran.csiro.au}{csiro}, \href{https://cran.ms.unimelb.edu.au}{unimelb},
+\href{https://mirror.aarnet.edu.au/pub/CRAN}{aarnet}, \href{https://cran.curtin.edu.au}{curtin},
+\href{https://cloud.r-project.org}{aws}.
 
-`aws` is a special case, the "cloud" redirect sponsored by RStudio, it redirects to a nearby Amazon
+\code{aws} is a special case, the "cloud" redirect sponsored by RStudio, it redirects to a nearby Amazon
 AWS server. I asumme this is usually Sydney, right on the big fat fibre pipes in Haymarket that many
 companies use.
 
 A 'private' repository can be included by setting the environment variable 'OZ_PRIVATE'. Do not include
 the trailing slash, as in the list above. If set this will be included like
-`c(private = "https://mycran/")`.
+\code{c(private = "https://mycran/")}.
 }
 \examples{
 oz_repos()
 }
 \seealso{
-[oz_db] that returns the package list from these repositories
+\link{oz_db} that returns the package list from these repositories
 }
