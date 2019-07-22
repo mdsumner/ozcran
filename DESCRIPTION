@@ -1,5 +1,5 @@
 Package: ozcran
-Title: What the Package Does (One Line, Title Case)
+Title: Assess CRAN in Australia
 Version: 0.0.1
 Authors@R: 
     person(given = "Michael",
@@ -7,14 +7,18 @@ Authors@R:
            role = c("aut", "cre"),
            email = "mdsumner@gmail.com",
            comment = c(ORCID = "0000-0002-2471-7511"))
-Description: Obtain list of packages from Australian CRAN mirrors.
+Description: Obtain list of packages from Australian CRAN mirrors for the purposes
+ of comparing their status and performance. 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    covr
 RoxygenNote: 6.1.1
 Imports: 
     purrr,
     dplyr,
     tibble
+URL: https://github.com/mdsumner/ozcran
+BugReports: https://github.com/mdsumner/ozcran/issues

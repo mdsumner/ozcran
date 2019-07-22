@@ -5,6 +5,12 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/mdsumner/ozcran.svg?branch=master)](https://travis-ci.org/mdsumner/ozcran)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/mdsumner/ozcran?branch=master&svg=true)](https://ci.appveyor.com/project/mdsumner/ozcran)
+[![Codecov test
+coverage](https://codecov.io/gh/mdsumner/ozcran/branch/master/graph/badge.svg)](https://codecov.io/gh/mdsumner/ozcran?branch=master)
 <!-- badges: end -->
 
 The goal of ozcran is to check the status and packages available from
@@ -49,3 +55,9 @@ db %>% group_by(repos) %>% summarize(n = n(), date = max(as.Date(Published), na.
 #> 4 csiro   14569 2019-07-15
 #> 5 unimelb 14567 2019-07-15
 ```
+
+-----
+
+Please note that the ‘ozcran’ project is released with a [Contributor
+Code of Conduct](https://CODE_OF_CONDUCT.md). By contributing to this
+project, you agree to abide by its terms.
