@@ -46,6 +46,9 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -90,25 +93,35 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ozcran)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;     filter, lag</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">db &lt;-<span class="st"> </span><span class="kw"><a href="reference/oz_db.html">oz_db</a></span>() </a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">db <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(repos) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">n =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>(), <span class="dt">date =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(Published), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(date))</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; # A tibble: 5 x 3</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt;   repos       n date      </span></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;date&gt;    </span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; 1 aws     14594 2019-07-22</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; 2 curtin  14594 2019-07-21</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; 3 aarnet  14569 2019-07-15</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; 4 csiro   14569 2019-07-15</span></a>
-<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; 5 unimelb 14567 2019-07-15</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-4" data-line-number="4">db &lt;-<span class="st"> </span><span class="kw"><a href="reference/oz_db.html">oz_db</a></span>() </a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/dim">dim</a></span>(db)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] 72893    65</span></a></code></pre></div>
+<p><code>db</code> now is a data frame with lots of fields about every package, and reflects the status of at least five online mirrors. The mirror itself is named in the <code>repos</code> column.</p>
+<p>Group by repository and find a summary of currency and number of packages.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">db <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(repos) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">n =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>(), <span class="dt">date =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(Published), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(date))</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; # A tibble: 5 x 3</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;   repos       n date      </span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;date&gt;    </span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 1 aws     14594 2019-07-22</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 2 curtin  14594 2019-07-21</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 3 aarnet  14569 2019-07-15</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 4 csiro   14569 2019-07-15</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 5 unimelb 14567 2019-07-15</span></a></code></pre></div>
+<p>We can also compare to the source CRAN mirror that is in Austria (no kangaroos).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/oz_db.html">oz_db</a></span>(<span class="dt">include_cran =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(repos) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">n =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/n.html">n</a></span>(), <span class="dt">date =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(Published), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(date))</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;   repos       n date      </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;date&gt;    </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 1 aws     14594 2019-07-22</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 2 cran    14594 2019-07-22</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 3 curtin  14594 2019-07-21</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 4 aarnet  14569 2019-07-15</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 5 csiro   14569 2019-07-15</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 6 unimelb 14567 2019-07-15</span></a></code></pre></div>
 <hr>
 <p>Please note that the ‘ozcran’ project is released with a <a href="https://CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>

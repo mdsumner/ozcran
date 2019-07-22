@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+library(dplyr)
 ```
 # ozcran
 
@@ -40,13 +41,33 @@ library(ozcran)
 
 library(dplyr)
 db <- oz_db() 
+dim(db)
+```
 
-db %>% group_by(repos) %>% summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>% arrange(desc(date))
+`db` now is a data frame with lots of fields about every package, and reflects the status of at least five online mirrors. The mirror itself is named in the `repos` column. 
+
+Group by repository and find a summary of currency and number of packages. 
+
+```{r example-group}
+db %>% group_by(repos) %>% 
+  summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>% 
+  arrange(desc(date))
 
 ```
 
+We can also compare to the source CRAN mirror that is in Austria (no kangaroos). 
+
+```{r include-austria}
+oz_db(include_cran = TRUE) %>% group_by(repos) %>% 
+  summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>% 
+  arrange(desc(date))
+
+```
+
+
 ---
 
+  
   Please note that the 'ozcran' project is released with a
   [Contributor Code of Conduct](https://CODE_OF_CONDUCT.md).
   By contributing to this project, you agree to abide by its terms.

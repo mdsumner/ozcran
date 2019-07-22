@@ -78,6 +78,9 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -118,19 +121,19 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>These are by name [csiro](https://cran.csiro.au), [unimelb](https://cran.ms.unimelb.edu.au),
-[aarnet](https://mirror.aarnet.edu.au/pub/CRAN), [curtin](https://cran.curtin.edu.au),
-[aws](https://cloud.r-project.org).</p>
-<p>`aws` is a special case, the "cloud" redirect sponsored by RStudio, it redirects to a nearby Amazon
+    <p>These are by name <a href='https://cran.csiro.au'>csiro</a>, <a href='https://cran.ms.unimelb.edu.au'>unimelb</a>,
+<a href='https://mirror.aarnet.edu.au/pub/CRAN'>aarnet</a>, <a href='https://cran.curtin.edu.au'>curtin</a>,
+<a href='https://cloud.r-project.org'>aws</a>.</p>
+<p><code>aws</code> is a special case, the "cloud" redirect sponsored by RStudio, it redirects to a nearby Amazon
 AWS server. I asumme this is usually Sydney, right on the big fat fibre pipes in Haymarket that many
 companies use.</p>
 <p>A 'private' repository can be included by setting the environment variable 'OZ_PRIVATE'. Do not include
 the trailing slash, as in the list above. If set this will be included like
-`c(private = "https://mycran/")`.</p>
+<code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c(private = "https://mycran/")</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>[oz_db] that returns the package list from these repositories</p></div>
+    <div class='dont-index'><p><a href='oz_db.html'>oz_db</a> that returns the package list from these repositories</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -138,8 +141,8 @@ the trailing slash, as in the list above. If set this will be included like
 #&gt;                 "https://cran.csiro.au"        "https://cran.ms.unimelb.edu.au" 
 #&gt;                                  aarnet                                  curtin 
 #&gt; "https://mirror.aarnet.edu.au/pub/CRAN"            "https://cran.curtin.edu.au" 
-#&gt;                                     aws 
-#&gt;           "https://cloud.r-project.org" </div></pre>
+#&gt;                                     aws                                 private 
+#&gt;           "https://cloud.r-project.org"    "file:///rdsi/PRIVATE/raad/dev/cran" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -60,6 +60,9 @@ oz_db <- function(..., include_cran = FALSE) {
   env0 <- Sys.getenv("R_CRAN_WEB")
   on.exit(if (!is.null(env0)) {Sys.setenv(R_CRAN_WEB = env0)} else {Sys.unsetenv("R_CRAN_WEB")}, add = TRUE)
   repos <- oz_repos()
+  if (include_cran) {
+    repos <- c(repos, cran = "https://CRAN.r-project.org")
+  }
   purrr::map2_dfr(repos, names(repos), ~{
     Sys.setenv(R_CRAN_WEB = .x)
     db <- try(suppressWarnings(rawdb <- tools::CRAN_package_db()), silent = TRUE)

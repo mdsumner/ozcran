@@ -35,17 +35,22 @@ mirrors and provides a quick summary.
 library(ozcran)
 
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 db <- oz_db() 
+dim(db)
+#> [1] 72893    65
+```
 
-db %>% group_by(repos) %>% summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>% arrange(desc(date))
+`db` now is a data frame with lots of fields about every package, and
+reflects the status of at least five online mirrors. The mirror itself
+is named in the `repos` column.
+
+Group by repository and find a summary of currency and number of
+packages.
+
+``` r
+db %>% group_by(repos) %>% 
+  summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>% 
+  arrange(desc(date))
 #> # A tibble: 5 x 3
 #>   repos       n date      
 #>   <chr>   <int> <date>    
@@ -54,6 +59,24 @@ db %>% group_by(repos) %>% summarize(n = n(), date = max(as.Date(Published), na.
 #> 3 aarnet  14569 2019-07-15
 #> 4 csiro   14569 2019-07-15
 #> 5 unimelb 14567 2019-07-15
+```
+
+We can also compare to the source CRAN mirror that is in Austria (no
+kangaroos).
+
+``` r
+oz_db(include_cran = TRUE) %>% group_by(repos) %>% 
+  summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>% 
+  arrange(desc(date))
+#> # A tibble: 6 x 3
+#>   repos       n date      
+#>   <chr>   <int> <date>    
+#> 1 aws     14594 2019-07-22
+#> 2 cran    14594 2019-07-22
+#> 3 curtin  14594 2019-07-21
+#> 4 aarnet  14569 2019-07-15
+#> 5 csiro   14569 2019-07-15
+#> 6 unimelb 14567 2019-07-15
 ```
 
 -----
