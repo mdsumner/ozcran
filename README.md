@@ -22,8 +22,8 @@ You can install the development version from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("mdsumner/ozcran")
+# install.packages("remotes")
+remotes::install_github("mdsumner/ozcran")
 ```
 
 ## Example
@@ -37,7 +37,7 @@ library(ozcran)
 library(dplyr)
 db <- oz_db() 
 dim(db)
-#> [1] 72893    65
+#> [1] 87487    65
 ```
 
 `db` now is a data frame with lots of fields about every package, and
@@ -51,14 +51,15 @@ packages.
 db %>% group_by(repos) %>% 
   summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>% 
   arrange(desc(date))
-#> # A tibble: 5 x 3
+#> # A tibble: 6 x 3
 #>   repos       n date      
 #>   <chr>   <int> <date>    
 #> 1 aws     14594 2019-07-22
-#> 2 curtin  14594 2019-07-21
-#> 3 aarnet  14569 2019-07-15
-#> 4 csiro   14569 2019-07-15
-#> 5 unimelb 14567 2019-07-15
+#> 2 private 14594 2019-07-22
+#> 3 curtin  14594 2019-07-21
+#> 4 aarnet  14569 2019-07-15
+#> 5 csiro   14569 2019-07-15
+#> 6 unimelb 14567 2019-07-15
 ```
 
 We can also compare to the source CRAN mirror that is in Austria (no
@@ -68,15 +69,16 @@ kangaroos).
 oz_db(include_cran = TRUE) %>% group_by(repos) %>% 
   summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>% 
   arrange(desc(date))
-#> # A tibble: 6 x 3
+#> # A tibble: 7 x 3
 #>   repos       n date      
 #>   <chr>   <int> <date>    
 #> 1 aws     14594 2019-07-22
 #> 2 cran    14594 2019-07-22
-#> 3 curtin  14594 2019-07-21
-#> 4 aarnet  14569 2019-07-15
-#> 5 csiro   14569 2019-07-15
-#> 6 unimelb 14567 2019-07-15
+#> 3 private 14594 2019-07-22
+#> 4 curtin  14594 2019-07-21
+#> 5 aarnet  14569 2019-07-15
+#> 6 csiro   14569 2019-07-15
+#> 7 unimelb 14567 2019-07-15
 ```
 
 -----

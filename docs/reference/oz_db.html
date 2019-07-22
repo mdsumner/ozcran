@@ -153,14 +153,15 @@ is the name for the address provided above.</p>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>oz_db</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>repos</span>) <span class='kw'>%&gt;%</span>
 <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/n.html'>n</a></span>(), <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Extremes'>max</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='no'>Published</span>), <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) <span class='kw'>%&gt;%</span>
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span>(<span class='no'>date</span>))</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 3</span><span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span>(<span class='no'>date</span>))</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 3</span><span>
 #&gt;   repos       n date      
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>    
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> aws     </span><span style='text-decoration: underline;'>14</span><span>594 2019-07-22
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> curtin  </span><span style='text-decoration: underline;'>14</span><span>594 2019-07-21
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> aarnet  </span><span style='text-decoration: underline;'>14</span><span>569 2019-07-15
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> csiro   </span><span style='text-decoration: underline;'>14</span><span>569 2019-07-15
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> unimelb </span><span style='text-decoration: underline;'>14</span><span>567 2019-07-15</div></span></pre>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> private </span><span style='text-decoration: underline;'>14</span><span>594 2019-07-22
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> curtin  </span><span style='text-decoration: underline;'>14</span><span>594 2019-07-21
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> aarnet  </span><span style='text-decoration: underline;'>14</span><span>569 2019-07-15
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> csiro   </span><span style='text-decoration: underline;'>14</span><span>569 2019-07-15
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> unimelb </span><span style='text-decoration: underline;'>14</span><span>567 2019-07-15</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

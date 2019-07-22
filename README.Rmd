@@ -28,8 +28,8 @@ The goal of ozcran is to check the status and packages available from Australian
 You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("mdsumner/ozcran")
+# install.packages("remotes")
+remotes::install_github("mdsumner/ozcran")
 ```
 ## Example
 
