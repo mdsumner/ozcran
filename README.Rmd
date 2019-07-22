@@ -1,0 +1,49 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# ozcran
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of ozcran is to check the status and packages available from Australian CRAN mirrors. 
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("mdsumner/ozcran")
+```
+## Example
+
+This is a basic example which gets the package list from Australian CRAN mirrors and
+provides a quick summary. 
+
+```{r example}
+library(ozcran)
+
+library(dplyr)
+db <- oz_db() 
+
+db %>% group_by(repos) %>% summarize(n = n(), date = max(as.Date(Published), na.rm = TRUE)) %>% arrange(desc(date))
+
+```
+
+---
+
+  Please note that the 'ozcran' project is released with a
+  [Contributor Code of Conduct](https://CODE_OF_CONDUCT.md).
+  By contributing to this project, you agree to abide by its terms.
